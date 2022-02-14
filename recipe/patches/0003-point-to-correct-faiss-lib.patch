@@ -1,34 +1,33 @@
-From bb275d66a6663b2fb7c80565db8ed95cbb69f264 Mon Sep 17 00:00:00 2001
+From 30866079fadaeacb0097ace98064e747a4efcb06 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sat, 12 Feb 2022 14:11:30 +1100
 Subject: [PATCH 3/4] point to correct faiss lib
 
 ---
- CMakeLists.txt               | 10 +++-------
- python/graphvite/__init__.py |  5 ++---
- python/setup.py              |  6 +-----
- src/CMakeLists.txt           |  2 +-
- 4 files changed, 7 insertions(+), 16 deletions(-)
+ CMakeLists.txt               | 9 +++------
+ python/graphvite/__init__.py | 9 ++++++---
+ python/setup.py              | 6 +-----
+ src/CMakeLists.txt           | 2 +-
+ 4 files changed, 11 insertions(+), 15 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 28f8b7c..6bc112d 100644
+index 28f8b7c..3eaf3b0 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -107,10 +107,9 @@ if (NOT FAISS_PATH)
-         set(FAISS_LIBRARY ${PROJECT_BINARY_DIR}/faiss/lib/libfaiss.so)
+@@ -108,9 +108,9 @@ if (NOT FAISS_PATH)
      endif()
  else()
--    get_filename_component(FAISS_PARENT ${FAISS_PATH} DIRECTORY)
+     get_filename_component(FAISS_PARENT ${FAISS_PATH} DIRECTORY)
 -    include_directories(${FAISS_PARENT})
 -    link_directories(${FAISS_PATH})
 -    set(FAISS_LIBRARY ${FAISS_PATH}/libfaiss.so)
-+    include_directories(${PROJECT_BINARY_DIR}/faiss/include)
-+    link_directories(${PROJECT_BINARY_DIR}/lib)
-+    set(FAISS_LIBRARY ${PROJECT_BINARY_DIR}/lib/libfaiss.so)
++    include_directories(${PROJECT_BINARY_DIR}/include/faiss)
++    link_directories(${FAISS_PARENT})
++    set(FAISS_LIBRARY ${FAISS_PATH})
  endif()
  
  if (NOT CMAKE_BUILD_TYPE)
-@@ -138,9 +137,6 @@ endforeach()
+@@ -138,9 +138,6 @@ endforeach()
  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
@@ -39,17 +38,21 @@ index 28f8b7c..6bc112d 100644
  # project directories
  include_directories(${PYTHON_INCLUDE_DIRS})
 diff --git a/python/graphvite/__init__.py b/python/graphvite/__init__.py
-index 876fe0e..c587cb9 100644
+index 876fe0e..937432c 100644
 --- a/python/graphvite/__init__.py
 +++ b/python/graphvite/__init__.py
-@@ -26,9 +26,8 @@ from . import util
+@@ -26,9 +26,12 @@ from . import util
  
  package_path = os.path.dirname(__file__)
  candidate_paths = [
 -    os.path.realpath(os.path.join(package_path, "lib")),
 -    os.path.realpath(os.path.join(package_path, "../../lib")),
 -    os.path.realpath(os.path.join(package_path, "../../build/lib"))
++    # unix
 +    os.path.realpath(os.path.join(os.environ["CONDA_PREFIX"], "lib")),
++    # windows
++    os.path.realpath(os.path.join(os.environ["CONDA_PREFIX"], "Library/lib")),
++    # during build
 +    os.path.realpath(os.path.join(os.environ["PREFIX"], "lib")),
  ]
  lib_file = imp.find_module("libgraphvite", candidate_paths)[1]
@@ -73,7 +76,7 @@ index 7b78d7a..bd39b83 100644
  for path, dirs, files in os.walk(os.path.join(project_path, "config")):
      install_path = os.path.join(name, os.path.relpath(path, project_path))
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 3706ec0..5d32062 100644
+index 3706ec0..9712879 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -8,6 +8,6 @@ else ()
@@ -81,7 +84,7 @@ index 3706ec0..5d32062 100644
              OUTPUT_NAME             graphvite)
  
 -    target_link_libraries(graphvite pthread curand glog.so faiss.so)
-+    target_link_libraries(graphvite pthread curand glog.so libfaiss.so)
++    target_link_libraries(graphvite pthread curand glog faiss)
      target_compile_options(graphvite PRIVATE "-Xcompiler=-fno-fat-lto-objects") # -flto
  endif ()
 \ No newline at end of file
