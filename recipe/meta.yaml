@@ -82,7 +82,7 @@ outputs:
         - imageio
         - matplotlib
         - nltk
-        - pytorch
+        - pytorch *
         - scipy
         - torchvision
     # already tested for graphvite-mini
