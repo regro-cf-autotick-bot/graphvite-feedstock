@@ -11,7 +11,7 @@ cuda_compiler_version:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '10'
+- '9'
 docker_image:
 - quay.io/condaforge/linux-anvil-cuda:11.2
 gflags:
@@ -26,8 +26,6 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.9.* *_cpython
-pytorch:
-- '1.10'
 target_platform:
 - linux-64
 zip_keys:
