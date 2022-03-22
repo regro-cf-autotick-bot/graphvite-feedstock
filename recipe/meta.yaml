@@ -1,7 +1,7 @@
 {% set version = "0.2.2" %}
 
 package:
-  name: graphvite
+  name: graphvite-split
   version: {{ version }}
 
 source:
@@ -14,7 +14,7 @@ source:
     - patches/0004-add-install-step.patch
 
 build:
-  number: 0
+  number: 1
   # only linux for now
   skip: true  # [not linux]
   skip: true  # [cuda_compiler_version in ("None", "10.2")]
@@ -82,7 +82,7 @@ outputs:
         - imageio
         - matplotlib
         - nltk
-        - pytorch
+        - pytorch *
         - scipy
         - torchvision
     # already tested for graphvite-mini
