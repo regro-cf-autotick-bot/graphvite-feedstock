@@ -34,7 +34,7 @@ outputs:
       build:
         - {{ compiler("cxx") }}
         - {{ compiler("cuda") }}
-        - cmake >=3.12
+        - cmake
         - glog
         - gflags
         - python
@@ -58,7 +58,6 @@ outputs:
         - python
         - easydict
         - future
-        - importlib-metadata  # [py<38]
         - {{ pin_compatible('numpy') }}
         - psutil
         - pyyaml
