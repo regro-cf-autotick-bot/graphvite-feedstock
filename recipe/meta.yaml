@@ -22,6 +22,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
 
 outputs:
   # only difference between graphvite-mini and graphvite is the amout on runtime-deps
@@ -33,6 +34,7 @@ outputs:
     requirements:
       build:
         - {{ compiler("cxx") }}
+        - {{ stdlib('c') }}
         - {{ compiler("cuda") }}
         - cmake
         - glog
