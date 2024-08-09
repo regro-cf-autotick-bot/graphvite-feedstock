@@ -13,6 +13,7 @@ source:
     - patches/0003-point-to-correct-faiss-lib.patch
     - patches/0004-add-install-step.patch
     - patches/0005-help-find-gflags-glog.patch
+    - patches/0006-adapt-to-CUDA-12.patch       # [(cuda_compiler_version or "").startswith("12")]
 
 build:
   number: 3

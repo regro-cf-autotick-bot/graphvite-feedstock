@@ -1,0 +1,36 @@
+From f4e5017c4b977b5f20eeaa6ddaf2fb3e4e775265 Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Fri, 9 Aug 2024 18:16:17 +1100
+Subject: [PATCH 6/6] adapt to CUDA 12
+
+---
+ CMakeLists.txt     | 2 +-
+ src/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fbfe748..92c50ef 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,7 +15,7 @@ cmake_minimum_required(VERSION 3.12)
+ project(graphvite LANGUAGES CXX CUDA)
+ 
+ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+-include(FindCUDA)
++find_package(CUDAToolkit REQUIRED)
+ 
+ find_package(glog REQUIRED CONFIG)
+ find_package(gflags REQUIRED CONFIG)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f2504d4..83e3867 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -8,7 +8,7 @@ else ()
+             LINK_FLAGS              "-flto -Wl,-rpath=$ORIGIN"
+             OUTPUT_NAME             graphvite)
+ 
+-    target_link_libraries(graphvite pthread curand glog::glog faiss)
++    target_link_libraries(graphvite pthread CUDA::curand glog::glog faiss)
+     target_compile_options(graphvite PRIVATE "-Xcompiler=-fno-fat-lto-objects") # -flto
+ endif ()
+ 
