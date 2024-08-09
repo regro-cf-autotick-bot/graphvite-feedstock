@@ -1,7 +1,7 @@
 From f4e5017c4b977b5f20eeaa6ddaf2fb3e4e775265 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Fri, 9 Aug 2024 18:16:17 +1100
-Subject: [PATCH 6/7] adapt to CUDA 12
+Subject: [PATCH 6/8] adapt to CUDA 12
 
 ---
  CMakeLists.txt     | 2 +-
