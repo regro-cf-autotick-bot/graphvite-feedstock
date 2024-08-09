@@ -1,0 +1,23 @@
+From 65d2c7faa1d9e8714e093bca77c87352403b2aef Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Fri, 9 Aug 2024 18:57:04 +1100
+Subject: [PATCH 7/7] adapt to faiss >=1.7.4
+
+https://github.com/facebookresearch/faiss/commit/a996a4a052e6b392408d55fbbdaec2a72c096b30
+---
+ include/instance/visualization.cuh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/instance/visualization.cuh b/include/instance/visualization.cuh
+index 58148cb..519e6e8 100644
+--- a/include/instance/visualization.cuh
++++ b/include/instance/visualization.cuh
+@@ -120,7 +120,7 @@ public:
+     std::vector<float> vectors;
+ #ifndef NO_FAISS
+     std::vector<faiss::Index::distance_t> distances;
+-    std::vector<faiss::Index::idx_t> labels;
++    std::vector<faiss::idx_t> labels;
+ #endif
+     std::vector<KNNWorker *> workers;
+ 

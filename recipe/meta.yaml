@@ -14,6 +14,7 @@ source:
     - patches/0004-add-install-step.patch
     - patches/0005-help-find-gflags-glog.patch
     - patches/0006-adapt-to-CUDA-12.patch       # [(cuda_compiler_version or "").startswith("12")]
+    - patches/0007-adapt-to-faiss-1.7.4.patch
 
 build:
   number: 3
