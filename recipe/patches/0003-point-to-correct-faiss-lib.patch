@@ -1,7 +1,7 @@
 From 30866079fadaeacb0097ace98064e747a4efcb06 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sat, 12 Feb 2022 14:11:30 +1100
-Subject: [PATCH 3/4] point to correct faiss lib
+Subject: [PATCH 3/5] point to correct faiss lib
 
 ---
  CMakeLists.txt               | 9 +++------
@@ -88,6 +88,3 @@ index 3706ec0..9712879 100644
      target_compile_options(graphvite PRIVATE "-Xcompiler=-fno-fat-lto-objects") # -flto
  endif ()
 \ No newline at end of file
--- 
-2.32.0.windows.2
-

@@ -12,6 +12,7 @@ source:
     - patches/0002-compile-with-c-17.patch
     - patches/0003-point-to-correct-faiss-lib.patch
     - patches/0004-add-install-step.patch
+    - patches/0005-help-find-gflags-glog.patch
 
 build:
   number: 3

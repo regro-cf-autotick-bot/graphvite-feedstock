@@ -1,0 +1,74 @@
+From c9fea7ea083845798bbcd381adc8647944ff9e80 Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Fri, 9 Aug 2024 15:40:42 +1100
+Subject: [PATCH 5/5] help find gflags/glog
+
+---
+ CMakeLists.txt     | 16 ++++------------
+ src/CMakeLists.txt |  2 +-
+ 2 files changed, 5 insertions(+), 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3eaf3b0..fbfe748 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,8 +17,8 @@ project(graphvite LANGUAGES CXX CUDA)
+ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+ include(FindCUDA)
+ 
+-find_package(Glog)
+-find_package(GFlags)
++find_package(glog REQUIRED CONFIG)
++find_package(gflags REQUIRED CONFIG)
+ find_package(PythonLibsNew REQUIRED)
+ find_package(pybind11 REQUIRED)
+ 
+@@ -43,7 +43,7 @@ else()
+ endif()
+ 
+ # glog
+-if (NOT GLOG_FOUND)
++if (NOT glog_FOUND)
+     message(WARNING "Can't find glog library. It will be installed from git repository.")
+     ExternalProject_Add(glog
+             GIT_REPOSITORY      https://github.com/google/glog.git
+@@ -59,14 +59,10 @@ if (NOT GLOG_FOUND)
+             INSTALL_COMMAND     test -e include/glog/logging.h || make install prefix=${PROJECT_BINARY_DIR}/glog)
+     include_directories(${PROJECT_BINARY_DIR}/glog/include)
+     link_directories(${PROJECT_BINARY_DIR}/glog/.libs)
+-else()
+-    get_filename_component(GLOG_LIBRARY_DIR ${GLOG_LIBRARY} DIRECTORY)
+-    include_directories(${GLOG_INCLUDE_DIR})
+-    link_directories(${GLOG_LIBRARY_DIR})
+ endif ()
+ 
+ # gflags
+-if (NOT GFLAGS_FOUND)
++if (NOT gflags_FOUND)
+     message(WARNING "Can't find gflags library. It will be installed from git repository.")
+     ExternalProject_Add(gflags
+             GIT_REPOSITORY      https://github.com/gflags/gflags
+@@ -81,10 +77,6 @@ if (NOT GFLAGS_FOUND)
+             INSTALL_COMMAND     test -e include/gflags/gflags.h || make install)
+     include_directories(${PROJECT_BINARY_DIR}/gflags/include)
+     link_directories(${PROJECT_BINARY_DIR}/gflags/lib)
+-else()
+-    get_filename_component(GFLAGS_LIBRARY_DIR ${GFLAGS_LIBRARY} DIRECTORY)
+-    include_directories(${GFLAGS_INCLUDE_DIR})
+-    link_directories(${GFLAGS_LIBRARY_DIR})
+ endif()
+ 
+ # faiss
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 55aaebb..f2504d4 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -8,7 +8,7 @@ else ()
+             LINK_FLAGS              "-flto -Wl,-rpath=$ORIGIN"
+             OUTPUT_NAME             graphvite)
+ 
+-    target_link_libraries(graphvite pthread curand glog faiss)
++    target_link_libraries(graphvite pthread curand glog::glog faiss)
+     target_compile_options(graphvite PRIVATE "-Xcompiler=-fno-fat-lto-objects") # -flto
+ endif ()
+ 
