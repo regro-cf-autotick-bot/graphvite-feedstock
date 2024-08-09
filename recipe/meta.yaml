@@ -38,6 +38,7 @@ outputs:
         - {{ stdlib('c') }}
         - {{ compiler("cuda") }}
         - cmake
+        - ninja
         - glog
         - gflags
         - python
