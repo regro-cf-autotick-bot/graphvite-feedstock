@@ -1,5 +1,11 @@
 {% set version = "0.2.2" %}
 
+{% if cuda_compiler_version != "None" %}
+{% set cuda_major = environ.get("cuda_compiler_version", "11.8").split(".")[0] | int %}
+{% else %}
+{% set cuda_major = 0 %}
+{% endif %}
+
 package:
   name: graphvite-split
   version: {{ version }}
@@ -58,6 +64,11 @@ outputs:
         - pyyaml
         - setuptools
         - six
+        {% if cuda_major >= 12 %}
+        - cuda-version {{ cuda_compiler_version }}
+        - libcublas-dev
+        - libcurand-dev
+        {% endif %}
       run:
         - glog
         - gflags
