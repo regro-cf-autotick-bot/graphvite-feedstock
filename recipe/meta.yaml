@@ -42,15 +42,11 @@ outputs:
       string: "py{{ CONDA_PY }}cuda{{ cuda_compiler_version|replace(".", "") }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_cuda"
     requirements:
       build:
+        - {{ stdlib("c") }}
         - {{ compiler("cxx") }}
-        - {{ stdlib('c') }}
         - {{ compiler("cuda") }}
         - cmake
         - ninja
-        - glog
-        - gflags
-        - python
-        - pybind11
       host:
         # make
         - glog
