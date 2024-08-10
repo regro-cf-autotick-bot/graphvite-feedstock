@@ -1,0 +1,44 @@
+From e04241aad08f365a6f546c7d2996e1521ca66607 Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Fri, 9 Aug 2024 21:03:31 +1100
+Subject: [PATCH 8/8] adapt to glog 0.7
+
+---
+ include/util/io.h |  2 +-
+ src/graphvite.cu  | 10 +++++-----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/include/util/io.h b/include/util/io.h
+index 85cafb0..3063bc3 100644
+--- a/include/util/io.h
++++ b/include/util/io.h
+@@ -23,7 +23,7 @@
+ 
+ namespace graphvite {
+ 
+-void init_logging(int threshold = google::INFO, std::string dir = "", bool verbose = false) {
++void init_logging(int threshold = (int)google::INFO, std::string dir = "", bool verbose = false) {
+     static bool initialized = false;
+ 
+     FLAGS_minloglevel = threshold;
+diff --git a/src/graphvite.cu b/src/graphvite.cu
+index 9848f8c..589084f 100644
+--- a/src/graphvite.cu
++++ b/src/graphvite.cu
+@@ -84,11 +84,11 @@ PYBIND11_MODULE(libgraphvite, module) {
+ 
+     // glog
+     module.def("init_logging", graphvite::init_logging, py::no_gil(),
+-               py::arg("threshhold") = google::INFO, py::arg("dir") = "", py::arg("verbose") = false);
+-    module.attr("INFO") = google::INFO;
+-    module.attr("WARNING") = google::WARNING;
+-    module.attr("ERROR") = google::ERROR;
+-    module.attr("FATAL") = google::FATAL;
++               py::arg("threshhold") = (int)google::INFO, py::arg("dir") = "", py::arg("verbose") = false);
++    module.attr("INFO") = (int)google::INFO;
++    module.attr("WARNING") = (int)google::WARNING;
++    module.attr("ERROR") = (int)google::ERROR;
++    module.attr("FATAL") = (int)google::FATAL;
+ 
+     // io
+     auto io = module.def_submodule("io");

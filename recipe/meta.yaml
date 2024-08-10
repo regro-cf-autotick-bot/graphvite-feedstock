@@ -1,5 +1,11 @@
 {% set version = "0.2.2" %}
 
+{% if cuda_compiler_version != "None" %}
+{% set cuda_major = environ.get("cuda_compiler_version", "11.8").split(".")[0] | int %}
+{% else %}
+{% set cuda_major = 0 %}
+{% endif %}
+
 package:
   name: graphvite-split
   version: {{ version }}
@@ -12,33 +18,38 @@ source:
     - patches/0002-compile-with-c-17.patch
     - patches/0003-point-to-correct-faiss-lib.patch
     - patches/0004-add-install-step.patch
+    - patches/0005-help-find-gflags-glog.patch
+    - patches/0006-adapt-to-CUDA-12.patch       # [(cuda_compiler_version or "").startswith("12")]
+    - patches/0007-adapt-to-faiss-1.7.4.patch
+    - patches/0008-adapt-to-glog-0.7.patch
 
 build:
-  number: 2
+  number: 3
   # only linux for now
   skip: true  # [not linux]
-  skip: true  # [cuda_compiler_version in ("None", "10.2")]
+  skip: true  # [cuda_compiler_version == "None"]
+  # use of removed imp library
+  skip: true  # [py==312]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
 
 outputs:
   # only difference between graphvite-mini and graphvite is the amout on runtime-deps
   - name: graphvite-mini
     script: build-pkg.sh
-
     build:
+      skip: true  # [py==312]
       string: "py{{ CONDA_PY }}cuda{{ cuda_compiler_version|replace(".", "") }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_cuda"
     requirements:
       build:
+        - {{ stdlib("c") }}
         - {{ compiler("cxx") }}
         - {{ compiler("cuda") }}
-        - cmake >=3.12
-        - glog
-        - gflags
-        - python
-        - pybind11
+        - cmake
+        - ninja
       host:
         # make
         - glog
@@ -52,13 +63,17 @@ outputs:
         - pyyaml
         - setuptools
         - six
+        {% if cuda_major >= 12 %}
+        - cuda-version {{ cuda_compiler_version }}
+        - libcublas-dev
+        - libcurand-dev
+        {% endif %}
       run:
         - glog
         - gflags
         - python
         - easydict
         - future
-        - importlib-metadata  # [py<38]
         - {{ pin_compatible('numpy') }}
         - psutil
         - pyyaml
@@ -76,6 +91,8 @@ outputs:
 
   # only difference between graphvite-mini and graphvite is the amout on runtime-deps
   - name: graphvite
+    build:
+      noarch: python
     requirements:
       run:
         - {{ pin_subpackage('graphvite-mini', exact=True) }}
