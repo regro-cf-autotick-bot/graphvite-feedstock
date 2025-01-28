@@ -18,94 +18,6 @@ Current build status
 
 
 <table>
-    
-  <tr>
-    <td>Azure</td>
-    <td>
-      <details>
-        <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main">
-          </a>
-        </summary>
-        <table>
-          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
-          <tbody><tr>
-              <td>linux_64_cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12numpy1.22python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12numpy1.22python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12numpy1.22python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12numpy1.22python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12numpy1.22python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12numpy1.22python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12numpy1.23python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12numpy1.23python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12numpy1.26python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cuda_compilercuda-nvcccuda_compiler_version12.0cxx_compiler_version12numpy1.26python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cuda_compilernvcccuda_compiler_version11.8cxx_compiler_version11numpy1.22python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cuda_compilernvcccuda_compiler_version11.8cxx_compiler_version11numpy1.22python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cuda_compilernvcccuda_compiler_version11.8cxx_compiler_version11numpy1.22python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cuda_compilernvcccuda_compiler_version11.8cxx_compiler_version11numpy1.22python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cuda_compilernvcccuda_compiler_version11.8cxx_compiler_version11numpy1.22python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cuda_compilernvcccuda_compiler_version11.8cxx_compiler_version11numpy1.22python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cuda_compilernvcccuda_compiler_version11.8cxx_compiler_version11numpy1.23python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cuda_compilernvcccuda_compiler_version11.8cxx_compiler_version11numpy1.23python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cuda_compilernvcccuda_compiler_version11.8cxx_compiler_version11numpy1.26python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15422&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/graphvite-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cuda_compilernvcccuda_compiler_version11.8cxx_compiler_version11numpy1.26python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </details>
-    </td>
-  </tr>
 </table>
 
 Current release info
@@ -113,8 +25,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-graphvite-green.svg)](https://anaconda.org/conda-forge/graphvite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/graphvite.svg)](https://anaconda.org/conda-forge/graphvite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/graphvite.svg)](https://anaconda.org/conda-forge/graphvite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/graphvite.svg)](https://anaconda.org/conda-forge/graphvite) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-graphvite--mini-green.svg)](https://anaconda.org/conda-forge/graphvite-mini) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/graphvite-mini.svg)](https://anaconda.org/conda-forge/graphvite-mini) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/graphvite-mini.svg)](https://anaconda.org/conda-forge/graphvite-mini) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/graphvite-mini.svg)](https://anaconda.org/conda-forge/graphvite-mini) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-graphvite--split-green.svg)](https://anaconda.org/conda-forge/graphvite-split) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/graphvite-split.svg)](https://anaconda.org/conda-forge/graphvite-split) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/graphvite-split.svg)](https://anaconda.org/conda-forge/graphvite-split) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/graphvite-split.svg)](https://anaconda.org/conda-forge/graphvite-split) |
 
 Installing graphvite
 ====================
@@ -126,41 +37,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `graphvite, graphvite-mini` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `graphvite-split` can be installed with `conda`:
 
 ```
-conda install graphvite graphvite-mini
-```
-
-or with `mamba`:
-
-```
-mamba install graphvite graphvite-mini
-```
-
-It is possible to list all of the versions of `graphvite` available on your platform with `conda`:
-
-```
-conda search graphvite --channel conda-forge
+conda install graphvite-split
 ```
 
 or with `mamba`:
 
 ```
-mamba search graphvite --channel conda-forge
+mamba install graphvite-split
+```
+
+It is possible to list all of the versions of `graphvite-split` available on your platform with `conda`:
+
+```
+conda search graphvite-split --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search graphvite-split --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search graphvite --channel conda-forge
+mamba repoquery search graphvite-split --channel conda-forge
 
-# List packages depending on `graphvite`:
-mamba repoquery whoneeds graphvite --channel conda-forge
+# List packages depending on `graphvite-split`:
+mamba repoquery whoneeds graphvite-split --channel conda-forge
 
-# List dependencies of `graphvite`:
-mamba repoquery depends graphvite --channel conda-forge
+# List dependencies of `graphvite-split`:
+mamba repoquery depends graphvite-split --channel conda-forge
 ```
 
 
