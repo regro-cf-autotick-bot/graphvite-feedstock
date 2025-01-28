@@ -24,7 +24,7 @@ source:
     - patches/0008-adapt-to-glog-0.7.patch
 
 build:
-  number: 3
+  number: 4
   # only linux for now
   skip: true  # [not linux]
   skip: true  # [cuda_compiler_version == "None"]
@@ -104,6 +104,8 @@ outputs:
         - torchvision
     # already tested for graphvite-mini
     test:
+      requires:
+        - python {{ python_min }}
       imports:
         - graphvite
 
